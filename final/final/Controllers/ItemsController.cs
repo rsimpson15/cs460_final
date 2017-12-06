@@ -124,10 +124,15 @@ namespace final.Views
         }
 
         [HttpPost]
-        public JsonResult GetBids(string itemName)
+        public JsonResult GetBids(int? id)
         {
-            var bids = db.Bids.OrderByDescending(n => n.Price).ToList();
+            var bids = db.Bids.OrderByDescending(n => n.Price).FirstOrDefault(n=>n.ItemID == id);
             var bidList = $"<li>{bids}</li>";
+
+            var data = new
+            {
+                arr = bidList
+            };
             return Json(bidList, JsonRequestBehavior.AllowGet);
         }
         protected override void Dispose(bool disposing)
