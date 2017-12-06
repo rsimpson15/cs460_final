@@ -1,4 +1,5 @@
-﻿using System;
+﻿using final.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,9 @@ namespace final.Controllers
 {
     public class HomeController : Controller
     {
+
+        private Auction db = new Auction();
+
         public ActionResult Index()
         {
             return View();
